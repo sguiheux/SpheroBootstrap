@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:showIn="@layout/activity_main"
+    android:id="@+id/entire_view"
+    tools:context=".MainActivityFragment">
+
+    <com.orbotix.calibration.api.CalibrationImageButtonView
+        android:id="@+id/calibrateButton"
+        android:visibility="visible"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="#00000000"
+        android:scaleType="centerInside"
+        android:layout_marginBottom="10dp"
+        app:widget_orientation="above"
+        app:foreground_color="#FFFFFFFF"
+        app:background_color="#FF1990FF"
+        app:calibration_circle_radius="50dp"
+        app:calibration_center_x = "30dp"
+        app:calibration_center_y = "-30dp"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="true" />
+
+    <!-- The joystick view for the application -->
+    <com.orbotix.joystick.api.JoystickView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/joystickView"
+        android:visibility="visible"
+        app:puck_radius="60dp"
+        app:edge_overlap="10dp"
+        app:alpha="0.9"
+        android:clickable="false"
+        android:focusableInTouchMode="false"
+        android:focusable="false"
+        android:layout_above="@+id/calibrateButton" />
+
+    <com.orbotix.speedslider.api.SpeedSliderView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/gfx_speedbargreen_left"
+        android:id="@+id/slider"
+        app:leftHandDriveMode="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:id="@+id/colorPickerButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="#FFFFFF"
+        />
+
+
+
+    <!-- This needs to be the last element in your xml page if you want two finger calibration to work
+     anywhere in your application's page -->
+    <com.orbotix.calibration.api.CalibrationView
+        android:id="@+id/calibrationView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        app:twoFingerEnabled="true"
+        />
+
+    <!-- In this case, we want fragments to display over the calibration view -->
+    <FrameLayout
+        android:id="@+id/fragment_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</RelativeLayout>
+
